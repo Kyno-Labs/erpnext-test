@@ -1,7 +1,9 @@
 FROM frappe/erpnext:version-14
 
 # Copy the start script to a writable location
-COPY start.sh /usr/local/bin/start.sh
-RUN chmod +x /usr/local/bin/start.sh
+COPY start.sh /tmp/start.sh
 
-CMD ["/usr/local/bin/start.sh"]
+# Make it executable (should work in /tmp)
+RUN chmod +x /tmp/start.sh
+
+CMD ["/tmp/start.sh"]
