@@ -1,7 +1,7 @@
 FROM frappe/erpnext:version-14
 
-# Copy the start script and ensure it has proper Unix line endings
-COPY start.sh /start.sh
-RUN sed -i 's/\r$//' /start.sh && chmod +x /start.sh
+# Copy the start script to a writable location
+COPY start.sh /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
 
-CMD ["/start.sh"]
+CMD ["/usr/local/bin/start.sh"]
